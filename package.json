@@ -1,0 +1,20 @@
+{
+  "name": "matala1-postsandcomments",
+  "version": "1.0.0",
+  "description": "FSD backend - matala1-postsAndComments",
+  "license": "ISC",
+  "author": "Sahar & Hadas",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env.dev index.js",
+    "dev": "nodemon --env-file=.env.dev index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
