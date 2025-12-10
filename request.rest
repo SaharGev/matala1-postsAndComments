@@ -1,3 +1,13 @@
 ###
 
 GET http://localhost:3000/post
+
+###
+POST http://localhost:3000/post
+Content-Type: application/json
+
+{
+  "title": "New Post Title",
+  "content": "This is the content of the new post.",
+  "senderId": 123456
+}
