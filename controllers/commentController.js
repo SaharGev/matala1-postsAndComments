@@ -22,18 +22,18 @@ const createComment = async (req, res) => {
     }
 };
 
-// Get comment by Post and ID
-const getCommentByPostAndId = async (req, res) => {
-    const { postId, commentId } = req.params;
+// Get comment by ID
+const getCommentById = async (req, res) => {
+    const id = req.params.id;
     try {
-        const comment = await commentModel.findOne({ _id: commentId, postId: postId });
+        const comment = await commentModel.findById(id);
         if (!comment) {
-            return res.status(404).json({ message: 'Comment not found' });
-        }
-        res.status(200).json(comment);
+            return res.status(404).send('Comment not found');
+        }   
+        res.json(comment);
     } catch (err) {
-        res.status(500).json({ message: err.message });
-    }   
+        res.status(500).send('Error retrieving comment');
+    }       
 };
 
 // Delete a comment 
@@ -63,11 +63,29 @@ const updateComment = async (req, res) => {
     }
 };
 
+// Get all comments by Post ID
+const getCommentsByPostId = async (req, res) => {
+    const { postId } = req.query; 
+    try {
+        let comments;
+        if (postId && mongoose.Types.ObjectId.isValid(postId)) {
+            comments = await commentModel.find({ postId: postId });
+        } else {
+            comments = await commentModel.find();
+        }
+
+        res.status(200).json(comments);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 
 module.exports = {
     getAllComments,
     createComment,
-    getCommentByPostAndId,
+    getCommentById,
     deleteComment,
-    updateComment
+    updateComment,
+    getCommentsByPostId
 };
