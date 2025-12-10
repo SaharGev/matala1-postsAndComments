@@ -3,7 +3,7 @@
 GET http://localhost:3000/post
 
 ###
-GET http://localhost:3000/post/69396f724d7d56cd4a072762
+GET http://localhost:3000/post/6939843cb1b375d9dca8e477
 
 ###
 POST http://localhost:3000/post
@@ -12,5 +12,8 @@ Content-Type: application/json
 {
   "title": "New Post Title",
   "content": "This is the content of the new post.",
-  "senderId": 123456
+  "sender": 333333333
 }
+
+###
+GET http://localhost:3000/post?sender=333333333
