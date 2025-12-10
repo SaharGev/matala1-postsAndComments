@@ -36,7 +36,7 @@ const getCommentByPostAndId = async (req, res) => {
     }   
 };
 
-// Delete a comment by 
+// Delete a comment 
 const deleteComment = async (req, res) => {
     const id = req.params.id;
     try {
@@ -48,10 +48,26 @@ const deleteComment = async (req, res) => {
     }
 };
 
+//Update a comment
+const updateComment = async (req, res) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    try {
+        const updatedComment = await commentModel.findByIdAndUpdate(id, updatedData, { new: true });
+        if (!updatedComment) {
+            return res.status(404).send('Comment not found');
+        }   
+        res.json(updatedComment);
+    } catch (err) {
+        res.status(500).send('Error updating comment');
+    }
+};
+
 
 module.exports = {
     getAllComments,
     createComment,
     getCommentByPostAndId,
-    deleteComment
+    deleteComment,
+    updateComment
 };
