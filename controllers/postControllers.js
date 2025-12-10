@@ -9,6 +9,20 @@ const getAllPosts = async (req, res) => {
     }
 };
 
+const getPostById = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const post = await postModel.findById(id);  
+        if (!post) {
+            return res.status(404).send('post not found');
+        }
+        res.json(post);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('error getting post by id');
+    }  
+}; 
+
 const createNewPost = async (req, res) => {
     const post = req.body;
     console.log(post);
@@ -22,5 +36,6 @@ const createNewPost = async (req, res) => {
 
 module.exports = {
     getAllPosts,
+    getPostById,
     createNewPost
 };
