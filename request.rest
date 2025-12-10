@@ -1,3 +1,6 @@
 ###
 
 GET http://localhost:3000/post
+
+###
+GET http://localhost:3000/post/69396f854d7d56cd4a072765
