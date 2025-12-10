@@ -1,3 +1,6 @@
+//request.rest
+
+//POSTS
 ###
 
 GET http://localhost:3000/post
@@ -26,3 +29,9 @@ Content-Type: application/json
   "title": "Updated Post Title",
   "content": "This is the updated content of the post."
 }
+
+//COMMENTS 
+
+###
+GET http://localhost:3000/comments
+
