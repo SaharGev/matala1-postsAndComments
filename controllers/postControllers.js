@@ -1,6 +1,6 @@
 const postModel = require('../models/postModel');
 
-getAllPosts = async (req, res) => {
+const getAllPosts = async (req, res) => {
     try {
         const posts = await postModel.find();
         res.json(posts);
@@ -9,7 +9,7 @@ getAllPosts = async (req, res) => {
     }
 };
 
-getPostById = async (req, res) => {
+const getPostById = async (req, res) => {
     const id = req.params.id;
     try {
         const post = await postModel.findById(id);  
@@ -20,10 +20,22 @@ getPostById = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).send('error getting post by id');
-    }   
+    }  
+}; 
+
+const createNewPost = async (req, res) => {
+    const post = req.body;
+    console.log(post);
+    try {
+        const newPost = await postModel.create(post);
+        res.status(201).json(newPost);
+    } catch (err) {
+        res.status(500).send('Error creating post');
+    }
 };
 
 module.exports = {
     getAllPosts,
-    getPostById
+    getPostById,
+    createNewPost
 };
