@@ -11,7 +11,18 @@ const getAllComments = async (req, res) => {
     }
 };
 
+// Create a new comment
+const createComment = async (req, res) => {
+    const comment = req.body;
+    try {
+        const newComment = await commentModel.create(comment);
+        res.status(201).json(newComment);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
 module.exports = {
     getAllComments,
+    createComment
 };
