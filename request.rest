@@ -33,31 +33,29 @@ Content-Type: application/json
 //COMMENTS 
 
 ###
-GET http://localhost:3000/comments
+GET http://localhost:3000/comments?postId=6939843cb1b375d9dca8e477
+
+###
+GET http://localhost:3000/comments/693c094bf73aa2a755b210f1
 
 ###
 POST http://localhost:3000/comments
 Content-Type: application/json
 
 {
-  "postId": "6939843cb1b375d9dca8e477",
-  "content": "This is a comment 2 on the post.",
-  "sender": "123"
+  "postId": "69398440b1b375d9dca8e479",
+  "content": "This is a comment 3 on the post.",
+  "sender": 122
 }
 
 ###
-GET http://localhost:3000/comments/6939a5b717a2ce1b84c34379
+DELETE http://localhost:3000/comments/693c095ff73aa2a755b210f5
 
 ###
-DELETE http://localhost:3000/comments/6939a7a38d7aeda900cc175d
-
-###
-PUT http://localhost:3000/comments/69399c4a6e0c6ea215bd6b09
+PUT http://localhost:3000/comments/693c094bf73aa2a755b210f1
 Content-Type: application/json
 
 {
   "content": "This is the updated comment content."
 }
 
-###
-GET http://localhost:3000/comments?postId=69398440b1b375d9dca8e479
