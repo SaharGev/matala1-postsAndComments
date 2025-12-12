@@ -1,3 +1,4 @@
+//index.js
 const express = require('express');
 const app = express();
 const port = process.env.PORT;
@@ -12,6 +13,9 @@ app.use(express.json());
 
 const postRouter = require('./routes/postRoutes');
 app.use('/post', postRouter);
+
+const commentRouter = require('./routes/commentRoute');
+app.use('/comments', commentRouter);
 
 
 app.listen(port, () => {
