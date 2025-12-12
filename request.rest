@@ -40,7 +40,10 @@ POST http://localhost:3000/comments
 Content-Type: application/json
 
 {
-  "postId": "69398440b1b375d9dca8e479",
-  "content": "This is a comment on the post.",
+  "postId": "6939843cb1b375d9dca8e477",
+  "content": "This is a comment 2 on the post.",
   "sender": "123"
 }
+
+###
+GET http://localhost:3000/comments/6939843cb1b375d9dca8e477/69399c4a6e0c6ea215bd6b09
