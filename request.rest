@@ -33,6 +33,9 @@ Content-Type: application/json
 //COMMENTS 
 
 ###
+GET http://localhost:3000/comments
+
+###
 GET http://localhost:3000/comments?postId=6939843cb1b375d9dca8e477
 
 ###
