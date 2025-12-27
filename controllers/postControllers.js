@@ -1,5 +1,6 @@
 //controllers/postControllers.js
 const postModel = require('../models/postModel');
+const commentModel = require('../models/commentModel');
 
 const getAllPosts = async (req, res) => {
     try {
@@ -55,9 +56,20 @@ const updatePost = async (req, res) => {
     }
 };
 
+const getCommentsByPostId = async (req, res) => {
+    const postId = req.params.postId;
+    try {
+        const comments = await commentModel.find({ postId: postId });
+        res.status(200).json(comments);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }   
+};
+
 module.exports = {
     getAllPosts,
     getPostById,
     createNewPost,
-    updatePost
+    updatePost,
+    getCommentsByPostId
 };
