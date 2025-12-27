@@ -7,5 +7,6 @@ router.get('/', postController.getAllPosts);
 router.get('/:id', postController.getPostById);
 router.post('/', postController.createNewPost);
 router.put('/:id', postController.updatePost);
+router.get('/:postId/comments', postController.getCommentsByPostId);
 
 module.exports = router;
